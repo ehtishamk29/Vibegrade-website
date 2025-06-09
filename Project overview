@@ -1,0 +1,165 @@
+# Project Overview
+VibeGrade is an AI-powered essay grading platform that integrates with Google Classroom, Google Docs, and Canvas to help teachers grade papers more efficiently.
+
+---
+
+## Tech Stack
+
+### Frontend Framework
+- **React with TypeScript**
+- **Vite** as the build tool
+- **Tailwind CSS** for styling
+
+### UI Components
+- Custom UI components built with Tailwind CSS
+- **Lucide React** for icons
+- Custom animations and transitions
+
+---
+
+## Project Structure
+
+### Key Components (20+ Components)
+
+#### Layout Components
+- **Footer.tsx** - Site footer with navigation and company info
+- **Hero.tsx** - Main landing section
+- **SchoolLogos.tsx** - Partner school logos display
+
+#### Feature Components
+- **AIWritingDetection.tsx** - AI writing detection feature
+- **DataSecurity.tsx** - Security features and trust badges
+- **FAQ.tsx** - Frequently asked questions
+- **Features.tsx** - Main features showcase
+- **GradeBreakdown.tsx** - Grading breakdown display
+- **HowItWorks.tsx** - Process explanation
+- **Install.tsx** - Installation instructions
+- **PlagiarismCheck.tsx** - Plagiarism detection feature
+- **PlaybackWriting.tsx** - Writing playback feature
+- **Pricing.tsx** - Pricing plans
+- **SmartAnnotations.tsx** - Smart annotation features
+- **Testimonials.tsx** - User testimonials
+
+#### UI Components (30+ components)
+- **Accordion**
+- **Alert Dialog**
+- **Avatar**
+- **Badge**
+- **Button**
+- **Card**
+- **Carousel**
+- **Checkbox**
+- **Dialog**
+- **Dropdown Menu**
+- **Form**
+- **Input**
+- **Navigation Menu**
+- **Popover**
+- **Progress**
+- **Select**
+- **Tabs**
+- **Toast**
+- And more...
+
+---
+
+## Key Features
+
+### Responsive Design
+- Mobile-first approach
+- Responsive layouts for all screen sizes
+- Custom mobile navigation
+
+### Performance Optimizations
+- Lazy loading of components
+- Optimized images
+- Efficient CSS with Tailwind
+
+### User Experience
+- Smooth animations
+- Interactive elements
+- Clear call-to-actions
+
+### Deployment
+- Hosted on **Vercel**
+- Continuous deployment from **GitHub**
+- Custom domain support
+
+---
+
+## Development Tools
+
+### Build Tools
+- **Vite** for fast development and building
+- **TypeScript** for type safety
+- **ESLint** for code quality
+
+### Styling
+- **Tailwind CSS** for utility-first styling
+- Custom CSS for specific components
+- Responsive design utilities
+
+### Version Control
+- **Git** for version control
+- **GitHub** for repository hosting
+- Branch-based development
+
+---
+
+## Project Features
+
+### Landing Page Sections
+- Hero section with main value proposition
+- Feature showcase
+- How it works
+- Pricing plans
+- Testimonials
+- FAQ
+- Contact information
+
+### Interactive Elements
+- Animated buttons
+- Hover effects
+- Smooth scrolling
+- Modal dialogs
+- Form validations
+
+### Performance Features
+- Optimized images
+- Lazy loading
+- Code splitting
+- Efficient CSS
+
+### Security Features
+- **Data Protection**
+  - Secure data handling
+  - Privacy-focused design
+  - Compliance badges
+- **Authentication**
+  - Secure login system
+  - Protected routes
+  - User session management
+
+---
+
+## Future Scalability
+
+### Code Structure
+- Modular component design
+- Reusable UI components
+- Easy to maintain and extend
+
+### Performance
+- Optimized for speed
+- Scalable architecture
+- Easy to add new features
+
+---
+
+## This project demonstrates modern web development practices with a focus on:
+- Clean, maintainable code
+- Performance optimization
+- User experience
+- Responsive design
+- Security
+- Scalability
