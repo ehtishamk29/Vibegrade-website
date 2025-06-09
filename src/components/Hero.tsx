@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowRight, Play, CheckCircle, Sparkles, Menu, X } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const rotatingTexts = [
   "your students will love",
@@ -53,7 +60,7 @@ const TypewriterText = ({ text }: { text: string }) => {
   }, [displayText, text, isTyping, isDeleting]);
 
   return (
-    <span className="relative h-[4em] mt-4 w-[600px] leading-none">
+    <span className="relative h-[4em] mt-4 w-full sm:w-[600px] leading-none">
       <span className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap leading-none text-[0.85em] bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
         {displayText}
         <span className={`inline-block w-[2px] h-[1em] align-middle ml-[2px] transition-opacity duration-300 ${isPaused ? 'opacity-0' : 'opacity-100'}`}>
@@ -66,6 +73,7 @@ const TypewriterText = ({ text }: { text: string }) => {
 
 const Hero = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,7 +84,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 overflow-hidden">
       {/* Enhanced Background gradient orbs with animation */}
       <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -107,24 +115,92 @@ const Hero = () => {
       {/* Decorative grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <div className="text-center mb-8 sm:mb-16">
           {/* Badge with animation */}
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-lg rounded-full px-6 py-3 mb-8 border border-white/30 animate-fade-in">
-            <Sparkles className="h-5 w-5 text-yellow-500 animate-pulse" />
-            <span className="text-base font-medium text-gray-700">Trusted by 10,000+ educators worldwide</span>
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-lg rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 sm:mb-8 border border-white/30 animate-fade-in">
+            <Sparkles className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 animate-pulse" />
+            <span className="text-sm sm:text-base font-medium text-gray-700">Trusted by 10,000+ educators worldwide</span>
           </div>
           
           {/* Navbar */}
-          <nav className="w-full max-w-7xl mx-auto px-6 mb-12">
+          <nav className="w-full max-w-7xl mx-auto px-4 sm:px-6 mb-6 sm:mb-12">
             <div className="flex items-center justify-between">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <img 
                   src="https://vibegrade.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FtextLogo.853d7cb2.png&w=3840&q=75&dpl=dpl_Bdt1YrUTBRA3eUrmibrKtv5ZHunj" 
                   alt="VibeGrade Logo" 
-                  className="h-8 w-auto"
+                  className="h-6 sm:h-8 w-auto"
                 />
+              </div>
+
+              {/* Mobile Menu Button */}
+              <div className="md:hidden">
+                <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-gray-600 hover:text-gray-900">
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                    <SheetHeader>
+                      <SheetTitle className="text-left">Menu</SheetTitle>
+                    </SheetHeader>
+                    <div className="flex flex-col space-y-4 mt-8">
+                      <a 
+                        href="#" 
+                        className="text-gray-600 hover:text-gray-900 transition-colors text-lg font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Features
+                      </a>
+                      <a 
+                        href="#" 
+                        className="text-gray-600 hover:text-gray-900 transition-colors text-lg font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        My Rubrics
+                      </a>
+                      <a 
+                        href="#" 
+                        className="text-gray-600 hover:text-gray-900 transition-colors text-lg font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Library
+                      </a>
+                      <a 
+                        href="#" 
+                        className="text-gray-600 hover:text-gray-900 transition-colors text-lg font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        News
+                      </a>
+                      <a 
+                        href="#" 
+                        className="text-gray-600 hover:text-gray-900 transition-colors text-lg font-medium"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Pricing
+                      </a>
+                      <div className="pt-4 border-t border-gray-200">
+                        <Button 
+                          variant="ghost" 
+                          className="w-full justify-start text-gray-600 hover:text-gray-900 text-lg font-medium"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Login
+                        </Button>
+                        <Button 
+                          className="w-full justify-start bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-lg font-medium mt-2"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          Sign Up
+                        </Button>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
               </div>
 
               {/* Navigation Links */}
@@ -137,11 +213,11 @@ const Hero = () => {
               </div>
 
               {/* Auth Buttons */}
-              <div className="flex items-center space-x-4">
-                <Button variant="ghost" className="text-gray-600 hover:text-gray-900">
+              <div className="hidden sm:flex items-center space-x-2 sm:space-x-4">
+                <Button variant="ghost" className="text-gray-600 hover:text-gray-900 text-sm sm:text-base">
                   Login
                 </Button>
-                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm sm:text-base">
                   Sign Up
                 </Button>
               </div>
@@ -149,47 +225,47 @@ const Hero = () => {
           </nav>
 
           {/* Backer Logos */}
-          <div className="flex items-center justify-center gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-6 sm:mb-10">
             <span className="text-gray-500 text-xs font-medium tracking-wide uppercase">Backed by</span>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 sm:gap-6">
               <div className="flex items-center gap-2">
                 <img 
                   src="https://purepng.com/public/uploads/large/purepng.com-microsoft-logo-iconlogobrand-logoiconslogos-251519939091wmudn.png" 
                   alt="Microsoft" 
-                  className="h-5 w-auto opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-105"
+                  className="h-4 sm:h-5 w-auto opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-105"
                 />
-                <span className="text-gray-600 text-sm font-medium">Microsoft</span>
+                <span className="text-gray-600 text-xs sm:text-sm font-medium">Microsoft</span>
               </div>
               <div className="flex items-center gap-2">
                 <img 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Y_Combinator_logo.svg/1200px-Y_Combinator_logo.svg.png" 
                   alt="Y Combinator" 
-                  className="h-5 w-auto opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-105"
+                  className="h-4 sm:h-5 w-auto opacity-70 hover:opacity-100 transition-all duration-300 hover:scale-105"
                 />
-                <span className="text-gray-600 text-sm font-medium">Combinator</span>
+                <span className="text-gray-600 text-xs sm:text-sm font-medium">Combinator</span>
               </div>
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-7xl font-bold leading-tight animate-fade-in delay-200">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in delay-200">
             <div className="flex flex-col items-center">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent pb-4">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent pb-2 sm:pb-4">
                 The essay grader that
               </span>
               <TypewriterText text={rotatingTexts[currentTextIndex]} />
             </div>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-400 -mt-40">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in delay-400 -mt-20 sm:-mt-40 px-4">
             Give your students the best feedback 10x faster. Teachers who vibe grade return full grade breakdowns with actionable feedback to every single student, in seconds.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-fade-in delay-600">
-            <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 animate-fade-in delay-600 px-4">
+            <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 sm:px-10 py-4 sm:py-6 rounded-full text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group hover:scale-105">
               Start Grading for Free
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" className="px-10 py-6 rounded-full text-lg font-semibold border-2 hover:bg-white/50 backdrop-blur-sm transition-all duration-300 group hover:scale-105">
-              <Play className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            <Button variant="outline" size="lg" className="w-full sm:w-auto px-6 sm:px-10 py-4 sm:py-6 rounded-full text-base sm:text-lg font-semibold border-2 hover:bg-white/50 backdrop-blur-sm transition-all duration-300 group hover:scale-105">
+              <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform" />
               Watch Demo
             </Button>
           </div>
